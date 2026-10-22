@@ -47,3 +47,20 @@ class Student(User):
             f"Completed Assignments: "
             f"{self.completed_assignments}"
         )
+
+def get_enrollment_summary(self):
+    """Return a summary of enrolled courses."""
+
+    if not self.enrolled_courses:
+        return f"{self.name} has no active courses."
+
+    course_names = [
+        course.course_name
+        for course in self.enrolled_courses
+    ]
+
+    return (
+        f"Student: {self.name}\n"
+        f"Total Courses: {len(course_names)}\n"
+        f"Courses: {', '.join(course_names)}"
+    )
