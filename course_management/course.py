@@ -1,3 +1,5 @@
+import keyword
+
 from .exceptions import (
     InvalidCapacityError,
     CourseFullError
@@ -104,3 +106,16 @@ class Course:
             f"Capacity: {self.__capacity}\n"
             f"Available Seats: {self.available_seats()}"
         )
+
+    @staticmethod
+    def search_courses(courses, keyword):
+        if not isinstance(keyword, str):
+            raise ValueError("Search keyword must be a string.")
+
+        keyword = keyword.strip().lower()
+
+        return [
+            course
+            for course in courses
+            if keyword in course.course_name.lower()
+        ]
